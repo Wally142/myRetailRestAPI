@@ -9,7 +9,7 @@ function getProductById() {
         success: function (response) {
             let id = response.product.item.tcin;
             let productName = response.product.item.product_description.title;
-
+            
             getProductPrice(id, productName);
 
         }
@@ -22,7 +22,7 @@ function getProductPrice(id, productName) {
         type: 'GET',
         url: 'http://localhost:8080/retail/products/' + id,
         success: function (response) {
-            console.log(response)
+            console.log(id, productName, response)
         }
     })
 }

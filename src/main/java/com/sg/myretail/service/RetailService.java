@@ -1,21 +1,22 @@
 package com.sg.myretail.service;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.sg.myretail.model.Product;
+import com.sg.myretail.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RetailService {
 
-    public ResponseEntity getProductById(int productId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Autowired
+    private ProductRepository repository;
+
+    public Product getProductById(int productId) {
+        return repository.findBy_id(productId);
     }
 
-    
-
+    public void updatePrice(int productId, Product product) {
+        repository.save(product);
+    }
 }
